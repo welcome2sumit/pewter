@@ -1,0 +1,92 @@
+h2. Tables:-
+
+1.Location
+
+
+*Table Name : location*
+*Table Number : * 
+*DESCRIPTION : *
+		We are maintaning location table for tracking the merchant if merchatn have multiple location.
+
+|_. SNO |_. COLUMN NAME |_. DATA TYPE |_. DESCRIPTION |
+| 1 | location_id  | INT (PK), NOT NULL | Auto increment column |
+| 2 | location_nm | VARCHAR (50), NOT NULL |  Name should be captured as location name |
+| 3 | contact_no | VARCHAR (50), NOT NULL | We can contact to the person as per given by location contact number | 
+| 4 | alt_contact_no | VARCHAR (50) NOT NULL | We will take contact number for alternative purpose |
+| 5 | location_address_id | INT (FK), NOT NULL | Foreign key of ADDRESS |
+| 6 | merchant_id | INT (FK), NOT NULL | Foreign key of MERCHANT |
+| 7 | status | VARCHAR (1), NOT NULL | it contains 2 values 
+A- active
+I-inactive
+| 8 | created_by | VARCHAR (50) NOT NULL | Name of person who created for auditing purpose |
+| 9 | created_dt | TIMESTAMP NOT NULL | Created date |
+| 10 | last_modified_by | VARCHAR (50) NOT NULL | Last time who modified the record |
+| 11 | last_modified_dt | TIMESTAMP, NOT NULL | On which date and time image has been modified |
+
+
+2.Location_Images
+
+
+*Table Name : location_images*
+*Table Number : * 
+*DESCRIPTION : *
+		We are maintaning location_images table for easily board on the merchant location to the customer.
+|_. SNO |_. COLUMN NAME |_. DATA TYPE |_. DESCRIPTION |
+| 1 | location_id  | INT (PK),(FK), NOT NULL | Auto increment column |
+| 2 | seq_no | VARCHAR (50), NOT NULL | Auto increment column  |
+| 3 | image_content | VARCHAR (50), NOT NULL |  | 
+| 4 | image_filename | VARCHAR (64) NOT NULL |  |
+| 5 | image_type | DATE, NOT NULL |  |
+| 6 | status | VARCHAR (1), NOT NULL | it contains 2 values 
+A- appear
+D- delete
+| 7 | created_by | VARCHAR (50) NOT NULL | Name of person who created for auditing purpose |
+| 8 | created_dt | TIMESTAMP NOT NULL | Created date |
+| 9 | last_modified_by | VARCHAR (50) NOT NULL | Last time who modified the record of location image |
+| 10 | last_modified_dt | TIMESTAMP NOT NULL | On which date and time image has been modified |
+
+
+
+
+Sample Schema Script
+create database if not exists pewterdb;
+use pewterdb;
+drop table if exists location;
+create table if not exists location (
+    location_id  integer not null primary key auto_increment,
+    location_nm varchar(50) not null,
+    contact_no varchar(20) not null,
+	alt_contact_no varchar(20) not null
+    location_address_id integer not null foreign key,
+	merchant_id integer not null foreign key,
+    status varchar(1) not null,
+	created_by varchar(50) not null,
+    created_dt timestamp not null,   	
+    last_modified_by varchar(50) not null,
+	last_modified_dt timestamp not null,
+);
+
+
+
+
+/** create table script for location_images **/
+create table if not exists location_images (
+location_id integer not null primary key auto_increment,
+seq_no varchar(50) not null,
+imgage_content blob not null,
+image_filename varchar(50) not null,
+image_type varchar(25),
+status varchar(1) not null,
+created_by varchar(50) not null,
+created_dt timestamp null,
+last_modified_by varchar(50) not null,
+last_modified_dt timestamp null);
+
+
+
+
+
+Tables : location and location_images
+-------->Mallesh Jajula
+
+
