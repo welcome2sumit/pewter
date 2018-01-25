@@ -9,7 +9,12 @@ Here, we are storing the information about  card which is requested by  member  
 |2  | card_id |  INT  , NOT NULL, FK| foreign key of card   |
 |3  | member_id | INT  , NOT NULL   | id of the member |
 |4  | shipping_address_id |  INT ,NOT NULL| shipping address of person where card will deliver   |
-|5  | status    | VARCHAR (1), NOT NULL |it contains 4 values  new,available,issued,activated,delete| 
+|5  | status    | VARCHAR (1), NOT NULL |it contains 4 values 
+N- new
+P- printed
+I-Issued
+A- Activated
+D-delete| 
 |6  | created_by |VARCHAR (50) , NOT NULL |name of the person who created this table|
 |7  | created_dt | VARCHAR  (50),NOT NULL  |created date|
 |8  | modified_by |VARCHAR (50) , NOT NULL |name of the person who is last modified the record|
