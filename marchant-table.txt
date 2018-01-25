@@ -1,0 +1,25 @@
+Merchant: 
+This table stores all the information about merchants like display name, firm registered name ,primary contact information, commutation addresses, business type, mail information, logo  and It’s type, terms and conditions and etc.
+
+Table Name: merchant
+|_. SNO |_. COLUMN NAME |_. DATA TYPE |_. DESCRIPTION |
+| 1 | merchant_id | INT (PK), NOT NULL | Auto increment column |
+| 2 | merchant_display_nm | VARCHAR (50), NOT NULL, UNIQUE | this name is used to display on platform |
+| 3 |business_registered_nm | VARCHAR (50), NOT NULL | the merchant business registered name with government | 
+| 4 |contact_nbr | VARCHAR (20) NOT NULL | merchant contact number |
+| 5 |alt_contact_nbr | VARCHAR (20) NOT NULL | alternate contact number |
+| 6 | primary_contact_person_nm | VARCHAR (50), NOT NULL | main contact person name |
+| 7 | primary_contact_person_nbr | VARCHAR (20) NOT NULL | communication purpose | 
+| 8 | email_address | VARCHAR (50), NOT NULL | email address to communicate
+| 9 | alt_email_address | VARCHAR (50), NOT NULL | alternative email address | 
+| 10 | communication_address_id | INT, (FK), NOT NULL | foreign key to ADDRESS table | 
+| 11 | secondary_address_id | INT, (FK), NOT NULL | foreign key to ADDRESS table | 
+| 12 | business_type_id | INT, (FK), NOT NULL | foreign key to BUSINESS_TYPE table | 
+| 13 | merchant logo | BLOB, NOT NULL | merchant business logo| 
+| 14 | merchant_logo_filename | VARCHAR (50), NOT NULL |file name of merchant logo | 
+| 15 | merchant_logo_type | VARCHAR (50), NOT NULL |possible types are jpeg or png or img | 
+| 16 | merchant_terms_and_conditions_id | INT, (FK), NOT NULL | foreign key to MERCHANT_TERMS_AND_CONDITIONS table | 
+| 17 | created_by | VARCHAR (50), NOT NULL | Name of person who created for auditing purpose| 
+| 18 | created_dt | TIMESTAMP, NOT NULL | Created date | 
+| 19 | last_modified_by | VARCHAR (50), NOT NULL | Last time who modified the record | 
+| 20 | last_modified_dt | TIMESTAMP, NOT NUL | on which date and time record has been modified | 
