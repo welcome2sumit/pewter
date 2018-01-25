@@ -1,0 +1,65 @@
+/** first drop database if already created **/
+
+drop schema if exists pewterdb;
+
+/** create schema if it not exists in the database**/
+
+create database if not exists pewterdb;
+
+use pewterdb;
+
+/** if table exists already, drop table first **/
+
+drop table if exists platform;
+drop table if exists business_type;
+
+Create table script:-
+
+/** script to create table **/
+
+create table if not exists business_type(
+        business_type_id  integer not null primary key auto_increment,
+	business_type_nm varchar(50) not null unique,
+   	description varchar(50) not null,
+	created_by varchar(50) not null,
+    	created_dt timestamp not null,
+	last_modified_by varchar(50) not null
+	last_modified_dt timestamp not null,
+);
+    
+    
+create table if not exists platform(
+        points_factor varchar(50) not null,
+	point_value varchar(50) not null,
+	created_by varchar(50) not null,
+    	created_dt timestamp not null,
+	last_modified_by varchar(50) not null
+	last_modified_dt timestamp not null,
+);
+    /**inserting business_type **/
+insert into business_type (business_type_id, business_type_nm,description,created_dt, created_by, last_modified_dt, last_modified_by) values
+(1, 'homeappliances','kitcken items', '2015-07-15', 'System', '2018-01-22', 'System'),
+(2, 'mobiles','mobile phones', '2015-07-15', 'System', '2018-01-22', 'System'),
+(3, 'clothes','modern dresses', '2015-07-15', 'System', '2018-01-22', 'System'),
+(4, 'dolls', 'kids dolls','2015-07-15', 'System', '2018-01-22', 'System'),
+(5, 'sports', 'all sports items','2015-07-15', 'System', '2018-01-22', 'System'),
+(6, 'computers','laptops and desktops', '2015-07-15', 'System', '2018-01-22', 'System'),
+(7, 'bags', 'travel bags and school bags','2015-07-15', 'System', '2018-01-22', 'System'),
+(8, 'Electronics', 'washing mechine and fans','2015-07-15', 'System', '2018-01-22', 'System');
+(9, 'watches', 'imported watches','2015-07-15', 'System', '2018-01-22', 'System');
+(10, 'footers','branded slippers and shoes','2015-07-15', 'System', '2018-01-22', 'System');
+
+/**inserting platform**/
+insert into platform(points_factor, point_value,created_dt, created_by, last_modified_dt, last_modified_by) values
+('10','0.10','2015-07-15', 'System', '2018-01-22', 'System'),
+('20','0.10','2015-07-15', 'System', '2018-01-22', 'System'),
+('30','0.10','2015-07-15', 'System', '2018-01-22', 'System'),
+('40','0.10','2015-07-15', 'System', '2018-01-22', 'System'),
+('50','0.10','2015-07-15', 'System', '2018-01-22', 'System'),
+('60','0.10','2015-07-15', 'System', '2018-01-22', 'System'),
+('70','0.10','2015-07-15', 'System', '2018-01-22', 'System'),
+('80','0.10','2015-07-15', 'System', '2018-01-22', 'System');
+('90','0.10','2015-07-15', 'System', '2018-01-22', 'System');
+('100','0.10','2015-07-15', 'System', '2018-01-22', 'System');
+
+

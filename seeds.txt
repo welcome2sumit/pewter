@@ -1,0 +1,40 @@
+
+TABLE NAME: business type
+The tables contains the about the business types what are the business are maintaining,
+It contains who are the business partners and business types
+
+
+
+|SNO.|COLUMN NAME | DATA TYPE | DESCRIPTION|
+|1   |business_type_id	|INTEGER,(PK)()|Auto increment|
+|2   |business_type_nm	|VARCHAR (25),NOT NULL|Name of the business|
+|3   |description      |VARCHAR (25),NOT NULL|Business description|
+|4   |creared_by |VARCHAR (50),NOT NULL|Name of person who created for auditing purpose|
+|5   |created_dt |TIMESTAMP,NOT NULL|Created date|
+|6   |last_modified_by|VARCHAR (50),NOT NULL|Last time who modified the record|
+|7   |last_modified_dt|TIMESTAMP,NOT NULL|On which date and time record has been modified|
+
+
+
+
+TABLE NAME: platform
+The table contains the what are the business factors ,and point values .
+
+
+|SNO.|COLUMN NAME|DATA TYPE|DESCRIPTION|
+|1   |points_factor|VARCHAR (50),NOT NULL|Business Income  |
+|2   |point_value  |VARCHAR (50),NOT NULL|What are the points value we are getting |
+|3   |creared_by   |VARCHAR (50),NOT NULL|Name of person who created for auditing purpose|
+|4   |created_dt   |TIMESTAMP,NOT NULL   |Created date|
+|5   |last_modified_by|VARCHAR (50),NOT NULL|Last time who modified the record|
+|6   |last_modified_dt|TIMESTAMP NOT NULL|On which date and time record has been modified|
+
+
+
+
+
+
+
+
+
+
