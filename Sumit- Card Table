@@ -1,0 +1,23 @@
+Data model For Card Table:
+
+Table Name: Card
+
+/** script to create table **/
+CREATE  TABLE if not exists pewterdb.card (
+card_id INT NOT NULL,
+card_nbr  VARCHAR(16) NULL,
+merchant_id INT NULL,
+status VARCHAR(2) NOT NULL,
+created_by VARCHAR(50) NOT NULL,
+created_dt TIMESTAMP NOT NULL,
+last_modified_by VARCHAR(50) NOT NULL,
+last_modified_dt TIMESTAMP NOT NULL);
+
+Alter table script:-
+
+/** to add forign key write script in this way **/
+alter table card
+add foreign key (merchant_id)
+references merchant(merchant_id);
+
+/** Insert script for inserting test data **/
