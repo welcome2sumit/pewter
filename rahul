@@ -1,0 +1,135 @@
+h1. Data Model Document
+
+h2. Tables:-
+
+*1.System User*
+It stores login credential and common information for every actor of our system. It stores username, password, activation_code, registered_dt etc.
+The data in this table is accessed to authenticate the user access to the system.
+
+*Table Name : system_user*
+
+|_. SNO |_. COLUMN NAME |_. DATA TYPE |_. DESCRIPTION |
+| 1 | system_user_id  | INT (PK), NOT NULL | Auto increment column |
+| 2 | user_nm | VARCHAR (50), NOT NULL, UNIQUE | Email should be captured as user name |
+| 3 | password | VARCHAR (64) NOT NULL | Password |
+| 4 | role_id | INT (FK), NOT NULL | Foreign key to role table | 
+| 5 | registered_dt | DATE, NOT NULL | registration date |
+| 6 | activation_dt | DATE, NOT NULL | user activation date |
+| 7 | activation_code | VARCHAR (6) | for verification | 
+| 8 | status | VARCHAR (1), NOT NULL | it contains 4 values 
+R- registered
+A- active
+L-locked
+D-delete |
+| 9 | created_by | VARCHAR (50) NOT NULL | Name of person who created for auditing purpose |
+| 10 | created_dt | TIMESTAMP NOT NULL | Created date |
+| 11 | last_modified_by | VARCHAR (50) NOT NULL | Last time who modified the record |
+| 12 | last_modified_dt | TIMESTAMP NOT NULL | On which date and time record has been modified |
+
+*2.Role*
+It contains roles availabe in our system.
+
+*Table Name : role*
+
+|_. SNO |_. COLUMN NAME |_. DATA TYPE |_. DESCRIPTION |
+| 1 | role_id | INT (PK), NOT NULL | Auto increment column |
+| 2 | role_code | VARCHAR (10), NOT NULL | unique role code for every type of role |
+| 3 | role_display_nm | VARCHAR (30) NOT NULL | for display in his profile |
+| 4 | created_by | VARCHAR (50) NOT NULL | Name of person who created for auditing purpose |
+| 5 | created_dt | TIMESTAMP NOT NULL | Created date |
+| 6 | last_modified_by | VARCHAR (50) NOT NULL | Last time who modified the record |
+| 7 | last_modified_dt | TIMESTAMP NOT NULL | On which date and time record has been modified |
+
+*3.Address*
+It stores address detail of member,order_card,merchant_communication_address,merchant_secondry_address, enquired_merchant address.
+*Table Name : address*
+
+|_. SNO |_. COLUMN NAME |_. DATA TYPE |_. DESCRIPTION |
+| 1 | address_id | INT (PK), NOT NULL | Auto increment column |
+| 2 | address_line1 | VARCHAR (60) NOT NULL | address line1 |
+| 3 | address_line2 | VARCHAR (60) | address line2 |
+| 4 | city | VARCHAR (20), NOT NULL | city |
+| 5 | state | VARCHAR (20), NOT NULL | state |
+| 6 | zip | INT, NOT NULL | zip code |
+| 7 | country | VARCHAR (20), NOT NULL | country |
+| 8 | created_by | VARCHAR (50) NOT NULL | Name of person who created for auditing purpose |
+| 9 | created_dt | TIMESTAMP NOT NULL | Created date |
+| 10 | last_modified_by | VARCHAR (50) NOT NULL | Last time who modified the record |
+| 11 | last_modified_dt | TIMESTAMP NOT NULL | On which date and time record has been modified |
+
+
+
+
+
+/** first drop database if already created **/
+
+drop schema if exists pewterdb;
+
+/** create schema if it not exists in the database**/
+
+create database if not exists pewterdb;
+
+use pewterdb;
+
+/** if table exists already, drop table first **/
+drop table if exists role;
+drop table if exists system_user;
+drop table if exists address;
+
+
+/** script to create table **/
+create table if not exists role (
+    role_id integer not null primary key auto_increment,
+    role_code varchar(50) not null unique,
+    display_role_nm varchar(30) not null,
+    created_by varchar(50) not null,
+	created_dt timestamp not null,
+    last_modified_by varchar(50) not null,
+	last_modified_dt timestamp not null
+);
+create table if not exists system_user (
+    system_user_id  integer not null primary key auto_increment,
+    user_name varchar(50) not null unique,
+    password varchar(64),
+	role_id integer not null,
+	registered_dt datetime not null,
+	activated_dt datetime,
+    activation_code varchar(6),
+	status varchar(1) not null,
+    created_by varchar(50) not null,
+	created_dt timestamp not null,
+    last_modified_by varchar(50) not null,
+	last_modified_dt timestamp not null
+);
+create table if not exists address (
+	address_id integer not null primary key auto_increment,
+	address_line1 varchar(60) not null,
+	address_line2 varchar(60),
+	city varchar(20) not null,
+	state varchar(20) not null,
+	zip integer not null,
+	country varchar(20),
+	created_by varchar(50) not null,
+	created_dt timestamp not null,
+    last_modified_by varchar(50) not null,
+	last_modified_dt timestamp not null
+);
+
+
+
+/** to add forign key write script in this way **/
+
+alter table system_user
+add foreign key (role_id)
+references role(role_id);
+
+
+/** sample script for how to write test data and seeds for table  **/
+/** seed for role table **/
+
+insert into role(role_code,display_role_nm,created_by,created_dt,last_modified_by,last_modified_dt) values('op','operator','admin','2018-01-15','admin','2018-01-15');
+insert into role(role_code,display_role_nm,created_by,created_dt,last_modified_by,last_modified_dt) values('ad','admin','admin','2018-01-15','admin','2018-01-15');
+insert into role(role_code,display_role_nm,created_by,created_dt,last_modified_by,last_modified_dt) values('csr','customer_support_represntative','admin','2018-01-15','admin','2018-01-15');
+insert into role(role_code,display_role_nm,created_by,created_dt,last_modified_by,last_modified_dt) values('mr','merchant','admin','2018-01-15','admin','2018-01-15');
+
+/** **/
