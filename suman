@@ -1,0 +1,42 @@
+
+Tables: -
+
+Here, we are storing the information about  card which is requested by  member  and delivery address where this card has to be deliver
+
+
+|_. SNO |_. COLUMN_NM |_. DATA TYPE |_. DESCRIPTION |
+|1  | order_card_id |   INT  , NOT NULL, PK |  auto increment |
+|2  | card_id |  INT  , NOT NULL, FK| foreign key of card   |
+|3  | member_id | INT  , NOT NULL   | id of the member |
+|4  | shipping_address_id |  INT ,NOT NULL| shipping address of person where card will deliver   |
+|5  | status    | VARCHAR (1), NOT NULL |it contains 4 values  new,available,issued,activated,delete| 
+|6  | created_by |VARCHAR (50) , NOT NULL |name of the person who created this table|
+|7  | created_dt | VARCHAR  (50),NOT NULL  |created date|
+|8  | modified_by |VARCHAR (50) , NOT NULL |name of the person who is last modified the record|
+|9  | modified_dt| VARCHAR (50) , NOT NULL |last modified date|
+
+/** script to create table **/
+
+create table if not exists order_card (
+    order_card_id  integer not null primary key auto_increment,
+	card_id     integer not null,
+    member_id   integer not null,
+    shipping_address_id  integer not null,
+    status varchar(1) not null,
+   created_dt timestamp not null,
+    created_by varchar(50) not null,
+    last_modified_dt timestamp not null,
+    last_modified_by varchar(50) not null
+);
+
+alter table order_card
+add foreign key (card_id)
+references card(card_id);
+
+alter table order_card
+add foreign key (card_id)
+references address(address_id);
+
+alter table order_card
+add foreign key (card_id)
+references member(member_id);
